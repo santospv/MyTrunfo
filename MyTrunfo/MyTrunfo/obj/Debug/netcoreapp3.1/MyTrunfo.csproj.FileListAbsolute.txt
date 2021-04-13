@@ -1,0 +1,16 @@
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.exe
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.deps.json
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.runtimeconfig.json
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.runtimeconfig.dev.json
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.dll
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\bin\Debug\netcoreapp3.1\MyTrunfo.pdb
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.csprojAssemblyReference.cache
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.Form1.resources
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.csproj.GenerateResource.cache
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.AssemblyInfoInputs.cache
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.AssemblyInfo.cs
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.csproj.CoreCompileInputs.cache
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.dll
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.pdb
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.genruntimeconfig.cache
+C:\REPOSITORIOS\MyTrunfo\MyTrunfo\MyTrunfo\obj\Debug\netcoreapp3.1\MyTrunfo.Properties.Resources.resources
