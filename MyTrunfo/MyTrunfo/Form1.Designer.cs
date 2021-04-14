@@ -30,6 +30,8 @@ namespace MyTrunfo
         private void InitializeComponent()
         {
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btn02 = new System.Windows.Forms.Button();
+            this.btn01 = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -45,13 +47,13 @@ namespace MyTrunfo
             this.lblPricePlayer2Value = new System.Windows.Forms.Label();
             this.lblDisplacementsPlayer2Value = new System.Windows.Forms.Label();
             this.lblMaxSpeedPlayer2Value = new System.Windows.Forms.Label();
-            this.lblWidthPlayer2Value = new System.Windows.Forms.Label();
+            this.lblLengthPlayer2Value = new System.Windows.Forms.Label();
             this.lblHorsePowerPlayer2Value = new System.Windows.Forms.Label();
             this.lblConsumptionPlayer2Value = new System.Windows.Forms.Label();
             this.lblPricePlayer2 = new System.Windows.Forms.Label();
             this.lblDisplacementsPlayer2 = new System.Windows.Forms.Label();
             this.lblMaxSpeedPlayer2 = new System.Windows.Forms.Label();
-            this.lblWidthPlayer2 = new System.Windows.Forms.Label();
+            this.lblLengthPlayer2 = new System.Windows.Forms.Label();
             this.lblHorsePowerPlayer2 = new System.Windows.Forms.Label();
             this.lblConsumptionPlayer2 = new System.Windows.Forms.Label();
             this.pnlCountPlayer2 = new System.Windows.Forms.Panel();
@@ -108,13 +110,13 @@ namespace MyTrunfo
             this.lblPricePlayer1Value = new System.Windows.Forms.Label();
             this.lblDisplacementsPlayer1Value = new System.Windows.Forms.Label();
             this.lblMaxSpeedPlayer1Value = new System.Windows.Forms.Label();
-            this.lblWidthPlayer1Value = new System.Windows.Forms.Label();
+            this.lblLengthPlayer1Value = new System.Windows.Forms.Label();
             this.lblHorsePowerPlayer1Value = new System.Windows.Forms.Label();
             this.lblConsumptionPlayer1Value = new System.Windows.Forms.Label();
             this.lblPricePlayer1 = new System.Windows.Forms.Label();
             this.lblDisplacementsPlayer1 = new System.Windows.Forms.Label();
             this.lblMaxSpeedPlayer1 = new System.Windows.Forms.Label();
-            this.lblWidthPlayer1 = new System.Windows.Forms.Label();
+            this.lblLengthPlayer1 = new System.Windows.Forms.Label();
             this.lblHorsePowerPlayer1 = new System.Windows.Forms.Label();
             this.lblConsumptionPlayer1 = new System.Windows.Forms.Label();
             this.pnlCountPlayer1 = new System.Windows.Forms.Panel();
@@ -161,8 +163,6 @@ namespace MyTrunfo
             this.picThumb2Player1 = new System.Windows.Forms.PictureBox();
             this.picThumb1Player1 = new System.Windows.Forms.PictureBox();
             this.picCardPlayer1 = new System.Windows.Forms.PictureBox();
-            this.btn01 = new System.Windows.Forms.Button();
-            this.btn02 = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlPlayer2.SuspendLayout();
@@ -271,6 +271,26 @@ namespace MyTrunfo
             this.pnlTop.Size = new System.Drawing.Size(916, 45);
             this.pnlTop.TabIndex = 0;
             // 
+            // btn02
+            // 
+            this.btn02.Location = new System.Drawing.Point(231, 11);
+            this.btn02.Name = "btn02";
+            this.btn02.Size = new System.Drawing.Size(75, 23);
+            this.btn02.TabIndex = 5;
+            this.btn02.Text = "BTN 02";
+            this.btn02.UseVisualStyleBackColor = true;
+            this.btn02.Click += new System.EventHandler(this.btn02_Click);
+            // 
+            // btn01
+            // 
+            this.btn01.Location = new System.Drawing.Point(153, 11);
+            this.btn01.Name = "btn01";
+            this.btn01.Size = new System.Drawing.Size(75, 23);
+            this.btn01.TabIndex = 4;
+            this.btn01.Text = "BTN 01";
+            this.btn01.UseVisualStyleBackColor = true;
+            this.btn01.Click += new System.EventHandler(this.btn01_Click);
+            // 
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(786, 10);
@@ -339,13 +359,13 @@ namespace MyTrunfo
             this.pnlPlayer2.Controls.Add(this.lblPricePlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblDisplacementsPlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblMaxSpeedPlayer2Value);
-            this.pnlPlayer2.Controls.Add(this.lblWidthPlayer2Value);
+            this.pnlPlayer2.Controls.Add(this.lblLengthPlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblHorsePowerPlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblConsumptionPlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblPricePlayer2);
             this.pnlPlayer2.Controls.Add(this.lblDisplacementsPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblMaxSpeedPlayer2);
-            this.pnlPlayer2.Controls.Add(this.lblWidthPlayer2);
+            this.pnlPlayer2.Controls.Add(this.lblLengthPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblHorsePowerPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblConsumptionPlayer2);
             this.pnlPlayer2.Controls.Add(this.pnlCountPlayer2);
@@ -467,14 +487,14 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer2Value.TabIndex = 53;
             this.lblMaxSpeedPlayer2Value.Text = "000";
             // 
-            // lblWidthPlayer2Value
+            // lblLengthPlayer2Value
             // 
-            this.lblWidthPlayer2Value.AutoSize = true;
-            this.lblWidthPlayer2Value.Location = new System.Drawing.Point(201, 373);
-            this.lblWidthPlayer2Value.Name = "lblWidthPlayer2Value";
-            this.lblWidthPlayer2Value.Size = new System.Drawing.Size(25, 15);
-            this.lblWidthPlayer2Value.TabIndex = 52;
-            this.lblWidthPlayer2Value.Text = "000";
+            this.lblLengthPlayer2Value.AutoSize = true;
+            this.lblLengthPlayer2Value.Location = new System.Drawing.Point(201, 373);
+            this.lblLengthPlayer2Value.Name = "lblLengthPlayer2Value";
+            this.lblLengthPlayer2Value.Size = new System.Drawing.Size(25, 15);
+            this.lblLengthPlayer2Value.TabIndex = 52;
+            this.lblLengthPlayer2Value.Text = "000";
             // 
             // lblHorsePowerPlayer2Value
             // 
@@ -517,18 +537,18 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer2.AutoSize = true;
             this.lblMaxSpeedPlayer2.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer2.Name = "lblMaxSpeedPlayer2";
-            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer2.TabIndex = 47;
             this.lblMaxSpeedPlayer2.Text = "Velocidade Max KM/H";
             // 
-            // lblWidthPlayer2
+            // lblLengthPlayer2
             // 
-            this.lblWidthPlayer2.AutoSize = true;
-            this.lblWidthPlayer2.Location = new System.Drawing.Point(64, 373);
-            this.lblWidthPlayer2.Name = "lblWidthPlayer2";
-            this.lblWidthPlayer2.Size = new System.Drawing.Size(124, 15);
-            this.lblWidthPlayer2.TabIndex = 46;
-            this.lblWidthPlayer2.Text = "Largura cm                   ";
+            this.lblLengthPlayer2.AutoSize = true;
+            this.lblLengthPlayer2.Location = new System.Drawing.Point(64, 373);
+            this.lblLengthPlayer2.Name = "lblLengthPlayer2";
+            this.lblLengthPlayer2.Size = new System.Drawing.Size(123, 15);
+            this.lblLengthPlayer2.TabIndex = 46;
+            this.lblLengthPlayer2.Text = "Comprimento cm       ";
             // 
             // lblHorsePowerPlayer2
             // 
@@ -1010,13 +1030,13 @@ namespace MyTrunfo
             this.pnlPlayer1.Controls.Add(this.lblPricePlayer1Value);
             this.pnlPlayer1.Controls.Add(this.lblDisplacementsPlayer1Value);
             this.pnlPlayer1.Controls.Add(this.lblMaxSpeedPlayer1Value);
-            this.pnlPlayer1.Controls.Add(this.lblWidthPlayer1Value);
+            this.pnlPlayer1.Controls.Add(this.lblLengthPlayer1Value);
             this.pnlPlayer1.Controls.Add(this.lblHorsePowerPlayer1Value);
             this.pnlPlayer1.Controls.Add(this.lblConsumptionPlayer1Value);
             this.pnlPlayer1.Controls.Add(this.lblPricePlayer1);
             this.pnlPlayer1.Controls.Add(this.lblDisplacementsPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblMaxSpeedPlayer1);
-            this.pnlPlayer1.Controls.Add(this.lblWidthPlayer1);
+            this.pnlPlayer1.Controls.Add(this.lblLengthPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblHorsePowerPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblConsumptionPlayer1);
             this.pnlPlayer1.Controls.Add(this.pnlCountPlayer1);
@@ -1138,14 +1158,14 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1Value.TabIndex = 53;
             this.lblMaxSpeedPlayer1Value.Text = "000";
             // 
-            // lblWidthPlayer1Value
+            // lblLengthPlayer1Value
             // 
-            this.lblWidthPlayer1Value.AutoSize = true;
-            this.lblWidthPlayer1Value.Location = new System.Drawing.Point(201, 373);
-            this.lblWidthPlayer1Value.Name = "lblWidthPlayer1Value";
-            this.lblWidthPlayer1Value.Size = new System.Drawing.Size(25, 15);
-            this.lblWidthPlayer1Value.TabIndex = 52;
-            this.lblWidthPlayer1Value.Text = "000";
+            this.lblLengthPlayer1Value.AutoSize = true;
+            this.lblLengthPlayer1Value.Location = new System.Drawing.Point(201, 373);
+            this.lblLengthPlayer1Value.Name = "lblLengthPlayer1Value";
+            this.lblLengthPlayer1Value.Size = new System.Drawing.Size(25, 15);
+            this.lblLengthPlayer1Value.TabIndex = 52;
+            this.lblLengthPlayer1Value.Text = "000";
             // 
             // lblHorsePowerPlayer1Value
             // 
@@ -1188,18 +1208,18 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1.AutoSize = true;
             this.lblMaxSpeedPlayer1.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer1.Name = "lblMaxSpeedPlayer1";
-            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
             // 
-            // lblWidthPlayer1
+            // lblLengthPlayer1
             // 
-            this.lblWidthPlayer1.AutoSize = true;
-            this.lblWidthPlayer1.Location = new System.Drawing.Point(64, 373);
-            this.lblWidthPlayer1.Name = "lblWidthPlayer1";
-            this.lblWidthPlayer1.Size = new System.Drawing.Size(124, 15);
-            this.lblWidthPlayer1.TabIndex = 46;
-            this.lblWidthPlayer1.Text = "Largura cm                   ";
+            this.lblLengthPlayer1.AutoSize = true;
+            this.lblLengthPlayer1.Location = new System.Drawing.Point(64, 373);
+            this.lblLengthPlayer1.Name = "lblLengthPlayer1";
+            this.lblLengthPlayer1.Size = new System.Drawing.Size(124, 15);
+            this.lblLengthPlayer1.TabIndex = 46;
+            this.lblLengthPlayer1.Text = "Largura cm                   ";
             // 
             // lblHorsePowerPlayer1
             // 
@@ -1660,26 +1680,6 @@ namespace MyTrunfo
             this.picCardPlayer1.TabIndex = 0;
             this.picCardPlayer1.TabStop = false;
             // 
-            // btn01
-            // 
-            this.btn01.Location = new System.Drawing.Point(153, 11);
-            this.btn01.Name = "btn01";
-            this.btn01.Size = new System.Drawing.Size(75, 23);
-            this.btn01.TabIndex = 4;
-            this.btn01.Text = "BTN 01";
-            this.btn01.UseVisualStyleBackColor = true;
-            this.btn01.Click += new System.EventHandler(this.btn01_Click);
-            // 
-            // btn02
-            // 
-            this.btn02.Location = new System.Drawing.Point(231, 11);
-            this.btn02.Name = "btn02";
-            this.btn02.Size = new System.Drawing.Size(75, 23);
-            this.btn02.TabIndex = 5;
-            this.btn02.Text = "BTN 02";
-            this.btn02.UseVisualStyleBackColor = true;
-            this.btn02.Click += new System.EventHandler(this.btn02_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1848,26 +1848,26 @@ namespace MyTrunfo
         private System.Windows.Forms.Label lblPricePlayer1;
         private System.Windows.Forms.Label lblDisplacementsPlayer1;
         private System.Windows.Forms.Label lblMaxSpeedPlayer1;
-        private System.Windows.Forms.Label lblWidthPlayer1;
+        private System.Windows.Forms.Label lblLengthPlayer1;
         private System.Windows.Forms.Label lblHorsePowerPlayer1;
         private System.Windows.Forms.Label lblConsumptionPlayer1;
         private System.Windows.Forms.Label lblPricePlayer1Value;
         private System.Windows.Forms.Label lblDisplacementsPlayer1Value;
         private System.Windows.Forms.Label lblMaxSpeedPlayer1Value;
-        private System.Windows.Forms.Label lblWidthPlayer1Value;
+        private System.Windows.Forms.Label lblLengthPlayer1Value;
         private System.Windows.Forms.Label lblHorsePowerPlayer1Value;
         private System.Windows.Forms.Label lblPlayer2;
         private System.Windows.Forms.Panel pnlPlayer2;
         private System.Windows.Forms.Label lblPricePlayer2Value;
         private System.Windows.Forms.Label lblDisplacementsPlayer2Value;
         private System.Windows.Forms.Label lblMaxSpeedPlayer2Value;
-        private System.Windows.Forms.Label lblWidthPlayer2Value;
+        private System.Windows.Forms.Label lblLengthPlayer2Value;
         private System.Windows.Forms.Label lblHorsePowerPlayer2Value;
         private System.Windows.Forms.Label lblConsumptionPlayer2Value;
         private System.Windows.Forms.Label lblPricePlayer2;
         private System.Windows.Forms.Label lblDisplacementsPlayer2;
         private System.Windows.Forms.Label lblMaxSpeedPlayer2;
-        private System.Windows.Forms.Label lblWidthPlayer2;
+        private System.Windows.Forms.Label lblLengthPlayer2;
         private System.Windows.Forms.Label lblHorsePowerPlayer2;
         private System.Windows.Forms.Label lblConsumptionPlayer2;
         private System.Windows.Forms.Panel pnlCountPlayer2;
