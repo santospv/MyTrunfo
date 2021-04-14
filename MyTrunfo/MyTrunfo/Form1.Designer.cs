@@ -43,7 +43,7 @@ namespace MyTrunfo
             this.picCountryPlayer2 = new System.Windows.Forms.PictureBox();
             this.lblCarBrandPlayer2 = new System.Windows.Forms.Label();
             this.lblCarNamePlayer2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCodeCardPlayer2 = new System.Windows.Forms.Label();
             this.lblPricePlayer2Value = new System.Windows.Forms.Label();
             this.lblDisplacementsPlayer2Value = new System.Windows.Forms.Label();
             this.lblMaxSpeedPlayer2Value = new System.Windows.Forms.Label();
@@ -103,7 +103,7 @@ namespace MyTrunfo
             this.lblPlayer1 = new System.Windows.Forms.Label();
             this.pnlPlayer1 = new System.Windows.Forms.Panel();
             this.picCarPlayer1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picCountryPlayer1 = new System.Windows.Forms.PictureBox();
             this.lblCarBrandPlayer1 = new System.Windows.Forms.Label();
             this.lblCarNamePlayer1 = new System.Windows.Forms.Label();
             this.lblCodeCardPlayer1 = new System.Windows.Forms.Label();
@@ -212,7 +212,7 @@ namespace MyTrunfo
             ((System.ComponentModel.ISupportInitialize)(this.picCardPlayer2)).BeginInit();
             this.pnlPlayer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCarPlayer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCountryPlayer1)).BeginInit();
             this.pnlCountPlayer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumb40Player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picThumb39Player1)).BeginInit();
@@ -299,6 +299,7 @@ namespace MyTrunfo
             this.btnStart.TabIndex = 3;
             this.btnStart.Text = "Iniciar Jogo";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // txtName
             // 
@@ -355,7 +356,7 @@ namespace MyTrunfo
             this.pnlPlayer2.Controls.Add(this.picCountryPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblCarBrandPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblCarNamePlayer2);
-            this.pnlPlayer2.Controls.Add(this.label1);
+            this.pnlPlayer2.Controls.Add(this.lblCodeCardPlayer2);
             this.pnlPlayer2.Controls.Add(this.lblPricePlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblDisplacementsPlayer2Value);
             this.pnlPlayer2.Controls.Add(this.lblMaxSpeedPlayer2Value);
@@ -449,16 +450,16 @@ namespace MyTrunfo
             this.lblCarNamePlayer2.TabIndex = 58;
             this.lblCarNamePlayer2.Text = "Car Name";
             // 
-            // label1
+            // lblCodeCardPlayer2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(214, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 15);
-            this.label1.TabIndex = 57;
-            this.label1.Text = "A0";
+            this.lblCodeCardPlayer2.AutoSize = true;
+            this.lblCodeCardPlayer2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCodeCardPlayer2.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lblCodeCardPlayer2.Location = new System.Drawing.Point(214, 118);
+            this.lblCodeCardPlayer2.Name = "lblCodeCardPlayer2";
+            this.lblCodeCardPlayer2.Size = new System.Drawing.Size(22, 15);
+            this.lblCodeCardPlayer2.TabIndex = 57;
+            this.lblCodeCardPlayer2.Text = "A0";
             // 
             // lblPricePlayer2Value
             // 
@@ -537,7 +538,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer2.AutoSize = true;
             this.lblMaxSpeedPlayer2.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer2.Name = "lblMaxSpeedPlayer2";
-            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(125, 15);
+            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(124, 15);
             this.lblMaxSpeedPlayer2.TabIndex = 47;
             this.lblMaxSpeedPlayer2.Text = "Velocidade Max KM/H";
             // 
@@ -1023,7 +1024,7 @@ namespace MyTrunfo
             // 
             this.pnlPlayer1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pnlPlayer1.Controls.Add(this.picCarPlayer1);
-            this.pnlPlayer1.Controls.Add(this.pictureBox1);
+            this.pnlPlayer1.Controls.Add(this.picCountryPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblCarBrandPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblCarNamePlayer1);
             this.pnlPlayer1.Controls.Add(this.lblCodeCardPlayer1);
@@ -1094,13 +1095,13 @@ namespace MyTrunfo
             this.picCarPlayer1.TabIndex = 60;
             this.picCarPlayer1.TabStop = false;
             // 
-            // pictureBox1
+            // picCountryPlayer1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(197, 289);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 26);
-            this.pictureBox1.TabIndex = 59;
-            this.pictureBox1.TabStop = false;
+            this.picCountryPlayer1.Location = new System.Drawing.Point(197, 289);
+            this.picCountryPlayer1.Name = "picCountryPlayer1";
+            this.picCountryPlayer1.Size = new System.Drawing.Size(36, 26);
+            this.picCountryPlayer1.TabIndex = 59;
+            this.picCountryPlayer1.TabStop = false;
             // 
             // lblCarBrandPlayer1
             // 
@@ -1193,6 +1194,7 @@ namespace MyTrunfo
             this.lblPricePlayer1.Size = new System.Drawing.Size(123, 15);
             this.lblPricePlayer1.TabIndex = 49;
             this.lblPricePlayer1.Text = "Preço K R$                    ";
+            this.lblPricePlayer1.Click += new System.EventHandler(this.lblPricePlayer1_Click);
             // 
             // lblDisplacementsPlayer1
             // 
@@ -1202,15 +1204,17 @@ namespace MyTrunfo
             this.lblDisplacementsPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblDisplacementsPlayer1.TabIndex = 48;
             this.lblDisplacementsPlayer1.Text = "Cilindradas CC             ";
+            this.lblDisplacementsPlayer1.Click += new System.EventHandler(this.lblDisplacementsPlayer1_Click);
             // 
             // lblMaxSpeedPlayer1
             // 
             this.lblMaxSpeedPlayer1.AutoSize = true;
             this.lblMaxSpeedPlayer1.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer1.Name = "lblMaxSpeedPlayer1";
-            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(125, 15);
+            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
+            this.lblMaxSpeedPlayer1.Click += new System.EventHandler(this.lblMaxSpeedPlayer1_Click);
             // 
             // lblLengthPlayer1
             // 
@@ -1220,6 +1224,7 @@ namespace MyTrunfo
             this.lblLengthPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblLengthPlayer1.TabIndex = 46;
             this.lblLengthPlayer1.Text = "Largura cm                   ";
+            this.lblLengthPlayer1.Click += new System.EventHandler(this.lblLengthPlayer1_Click);
             // 
             // lblHorsePowerPlayer1
             // 
@@ -1229,6 +1234,7 @@ namespace MyTrunfo
             this.lblHorsePowerPlayer1.Size = new System.Drawing.Size(122, 15);
             this.lblHorsePowerPlayer1.TabIndex = 45;
             this.lblHorsePowerPlayer1.Text = "Potência CV                 ";
+            this.lblHorsePowerPlayer1.Click += new System.EventHandler(this.lblHorsePowerPlayer1_Click);
             // 
             // lblConsumptionPlayer1
             // 
@@ -1238,6 +1244,7 @@ namespace MyTrunfo
             this.lblConsumptionPlayer1.Size = new System.Drawing.Size(121, 15);
             this.lblConsumptionPlayer1.TabIndex = 44;
             this.lblConsumptionPlayer1.Text = "Consumo Km/L          ";
+            this.lblConsumptionPlayer1.Click += new System.EventHandler(this.lblConsumptionPlayer1_Click);
             // 
             // pnlCountPlayer1
             // 
@@ -1743,7 +1750,7 @@ namespace MyTrunfo
             this.pnlPlayer1.ResumeLayout(false);
             this.pnlPlayer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCarPlayer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCountryPlayer1)).EndInit();
             this.pnlCountPlayer1.ResumeLayout(false);
             this.pnlCountPlayer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picThumb40Player1)).EndInit();
@@ -1917,8 +1924,8 @@ namespace MyTrunfo
         private System.Windows.Forms.Label lblPlayer1;
         private System.Windows.Forms.Label lblCarBrandPlayer2;
         private System.Windows.Forms.Label lblCarNamePlayer2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblCodeCardPlayer2;
+        private System.Windows.Forms.PictureBox picCountryPlayer1;
         private System.Windows.Forms.Label lblCarBrandPlayer1;
         private System.Windows.Forms.Label lblCarNamePlayer1;
         private System.Windows.Forms.Label lblCodeCardPlayer1;
