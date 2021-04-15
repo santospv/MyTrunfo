@@ -22,6 +22,9 @@ namespace MyTrunfo
         public List<Car> Player2Cards { get; set; }
         public Boolean Player1IsVisible { get; set; }
         public Boolean Player2IsVisible { get; set; }
+        public List<Car> TiedCards { get; set; }
+        public EPlayer CurrentWinner { get; set; }
+        public EPlayer LastWinner { get; set; }
         #endregion
 
         #region constructors
@@ -36,8 +39,6 @@ namespace MyTrunfo
         private void btn01_Click(object sender, EventArgs e)
         {
             TurnCard(EPlayer.Player1);
-            //this.picCarPlayer1.Image = Resources.Saveiro_Surf;
-            //this.picCarPlayer1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void btn02_Click(object sender, EventArgs e)
@@ -79,6 +80,7 @@ namespace MyTrunfo
         #region private methods
         private void PrepareEnvironment()
         {
+            TiedCards = new List<Car>();
             Player1IsVisible = true;
             Player2IsVisible = true;
             ResetThumbs(EPlayer.Player1);
@@ -255,18 +257,58 @@ namespace MyTrunfo
 
         public void Compare(ECategory category)
         {
-            var winner = EPlayer.Tied;
+            if (CurrentWinner == EPlayer.Player2)
+                MessageBox.Show("Oponente escolheu " + category);
 
+            TurnCard(EPlayer.Player2);
+            var winner = EPlayer.Tied;
             var player1CardActive = Player1Cards.FirstOrDefault();
             var player2CardActive = Player2Cards.FirstOrDefault();
-
             Player1Cards.Remove(Player1Cards.FirstOrDefault());
             Player2Cards.Remove(Player2Cards.FirstOrDefault());
+            winner = DetermineWinner(category, winner, player1CardActive, player2CardActive);
+            CurrentWinner = winner;
+            AddCardsToWinner(winner, player1CardActive, player2CardActive);
+            SetLabelsColors(category, winner);
+            Waiting();
+            RefreshActiveCards();
+            RefreshThumbs();
+            ClearLabels();
+            TurnCard(EPlayer.Player2);
+            NextRound();
+        }
 
+        private void AddCardsToWinner(EPlayer winner, Car player1CardActive, Car player2CardActive)
+        {
+            if (EPlayer.Player1 == winner)
+            {
+                Player1Cards.Add(player1CardActive);
+                Player1Cards.Add(player2CardActive);
+                Player1Cards.AddRange(TiedCards);
+                TiedCards = new List<Car>();
+            }
+
+            if (EPlayer.Player2 == winner)
+            {
+                Player2Cards.Add(player2CardActive);
+                Player2Cards.Add(player1CardActive);
+                Player2Cards.AddRange(TiedCards);
+                TiedCards = new List<Car>();
+            }
+
+            if (EPlayer.Tied == winner)
+            {
+                TiedCards.Add(player1CardActive);
+                TiedCards.Add(player2CardActive);
+            }
+        }
+
+        private static EPlayer DetermineWinner(ECategory category, EPlayer winner, Car player1CardActive, Car player2CardActive)
+        {
             switch (category)
             {
                 case ECategory.Consumption:
-                    winner = player1CardActive.Consumption == player2CardActive.Consumption 
+                    winner = player1CardActive.Consumption == player2CardActive.Consumption
                         ? EPlayer.Tied
                         : player1CardActive.Consumption > player2CardActive.Consumption
                             ? EPlayer.Player1
@@ -308,31 +350,17 @@ namespace MyTrunfo
                 case ECategory.Price:
                     winner = player1CardActive.Price == player2CardActive.Price
                         ? EPlayer.Tied
-                        : player1CardActive.Price > player2CardActive.Price
+                        : player1CardActive.Price < player2CardActive.Price
                             ? EPlayer.Player1
                             : EPlayer.Player2;
                     break;
             }
 
-            if (EPlayer.Player1 == winner)
-            {
-                Player1Cards.Add(player1CardActive);
-                Player1Cards.Add(player2CardActive);
-            }
-
-            if (EPlayer.Player2 == winner)
-            {
-                Player2Cards.Add(player2CardActive);
-                Player2Cards.Add(player1CardActive);
-            }
-
-            ShowResults(category, winner);
-            RefreshGame();
+            return winner;
         }
 
-        private void ShowResults(ECategory category, EPlayer winner)
+        private void SetLabelsColors(ECategory category, EPlayer winner)
         {
-            TurnCard(EPlayer.Player2);
             switch (category)
             {
                 case ECategory.Consumption:
@@ -419,10 +447,33 @@ namespace MyTrunfo
                             : Color.Red;
                     break;
             }
+        }
 
+        private void NextRound()
+        {
+            //MessageBox.Show("Nova Rodada");
+            if (CurrentWinner == EPlayer.Player1 || (CurrentWinner == EPlayer.Tied && LastWinner == EPlayer.Player2))
+                return;
+
+            if (CurrentWinner == EPlayer.Player2 || (CurrentWinner == EPlayer.Tied && LastWinner == EPlayer.Player1))
+            {
+                CommandCPU();
+                return;
+            }
+
+            return;
+        }
+
+        private void Waiting()
+        {
             Thread.Sleep(1000);
-            TurnCard(EPlayer.Player2);
-            ClearLabels();
+            MessageBox.Show("Fim da Rodada");
+            Thread.Sleep(1000);
+        }
+
+        private void WaitingCPU()
+        {
+            Thread.Sleep(1000);
         }
         #endregion
 
@@ -434,16 +485,101 @@ namespace MyTrunfo
         private void InitializeGame()
         {
             TurnCard(EPlayer.Player1);
-            RefreshGame();
+            RefreshActiveCards();
+            lblPlayer1.Text = txtName.Text;
+            btnStart.Enabled = false;
         }
 
-        private void RefreshGame()
+        private void RefreshActiveCards()
         {
             SetCard(Player1Cards.FirstOrDefault(), EPlayer.Player1);
             SetCard(Player2Cards.FirstOrDefault(), EPlayer.Player2);
+        }
 
+        private void RefreshThumbs()
+        {
             lblCountPlayer1.Text = Player1Cards.Count.ToString();
             lblCountPlayer2.Text = Player2Cards.Count.ToString();
+            picThumb1Player1.Visible = Player1Cards.Count >= 1;
+            picThumb2Player1.Visible = Player1Cards.Count >= 2;
+            picThumb3Player1.Visible = Player1Cards.Count >= 3;
+            picThumb4Player1.Visible = Player1Cards.Count >= 4;
+            picThumb5Player1.Visible = Player1Cards.Count >= 5;
+            picThumb6Player1.Visible = Player1Cards.Count >= 6;
+            picThumb7Player1.Visible = Player1Cards.Count >= 7;
+            picThumb8Player1.Visible = Player1Cards.Count >= 8;
+            picThumb9Player1.Visible = Player1Cards.Count >= 9;
+            picThumb10Player1.Visible = Player1Cards.Count >= 10;
+            picThumb11Player1.Visible = Player1Cards.Count >= 11;
+            picThumb12Player1.Visible = Player1Cards.Count >= 12;
+            picThumb13Player1.Visible = Player1Cards.Count >= 13;
+            picThumb14Player1.Visible = Player1Cards.Count >= 14;
+            picThumb15Player1.Visible = Player1Cards.Count >= 15;
+            picThumb16Player1.Visible = Player1Cards.Count >= 16;
+            picThumb17Player1.Visible = Player1Cards.Count >= 17;
+            picThumb18Player1.Visible = Player1Cards.Count >= 18;
+            picThumb19Player1.Visible = Player1Cards.Count >= 19;
+            picThumb20Player1.Visible = Player1Cards.Count >= 20;
+            picThumb21Player1.Visible = Player1Cards.Count >= 21;
+            picThumb22Player1.Visible = Player1Cards.Count >= 22;
+            picThumb23Player1.Visible = Player1Cards.Count >= 23;
+            picThumb24Player1.Visible = Player1Cards.Count >= 24;
+            picThumb25Player1.Visible = Player1Cards.Count >= 25;
+            picThumb26Player1.Visible = Player1Cards.Count >= 26;
+            picThumb27Player1.Visible = Player1Cards.Count >= 27;
+            picThumb28Player1.Visible = Player1Cards.Count >= 28;
+            picThumb29Player1.Visible = Player1Cards.Count >= 29;
+            picThumb30Player1.Visible = Player1Cards.Count >= 30;
+            picThumb31Player1.Visible = Player1Cards.Count >= 31;
+            picThumb32Player1.Visible = Player1Cards.Count >= 32;
+            picThumb33Player1.Visible = Player1Cards.Count >= 33;
+            picThumb34Player1.Visible = Player1Cards.Count >= 34;
+            picThumb35Player1.Visible = Player1Cards.Count >= 35;
+            picThumb36Player1.Visible = Player1Cards.Count >= 36;
+            picThumb37Player1.Visible = Player1Cards.Count >= 37;
+            picThumb38Player1.Visible = Player1Cards.Count >= 38;
+            picThumb39Player1.Visible = Player1Cards.Count >= 39;
+            picThumb40Player1.Visible = Player1Cards.Count >= 40;
+            picThumb1Player2.Visible = Player2Cards.Count >= 1;
+            picThumb2Player2.Visible = Player2Cards.Count >= 2;
+            picThumb3Player2.Visible = Player2Cards.Count >= 3;
+            picThumb4Player2.Visible = Player2Cards.Count >= 4;
+            picThumb5Player2.Visible = Player2Cards.Count >= 5;
+            picThumb6Player2.Visible = Player2Cards.Count >= 6;
+            picThumb7Player2.Visible = Player2Cards.Count >= 7;
+            picThumb8Player2.Visible = Player2Cards.Count >= 8;
+            picThumb9Player2.Visible = Player2Cards.Count >= 9;
+            picThumb10Player2.Visible = Player2Cards.Count >= 10;
+            picThumb11Player2.Visible = Player2Cards.Count >= 11;
+            picThumb12Player2.Visible = Player2Cards.Count >= 12;
+            picThumb13Player2.Visible = Player2Cards.Count >= 13;
+            picThumb14Player2.Visible = Player2Cards.Count >= 14;
+            picThumb15Player2.Visible = Player2Cards.Count >= 15;
+            picThumb16Player2.Visible = Player2Cards.Count >= 16;
+            picThumb17Player2.Visible = Player2Cards.Count >= 17;
+            picThumb18Player2.Visible = Player2Cards.Count >= 18;
+            picThumb19Player2.Visible = Player2Cards.Count >= 19;
+            picThumb20Player2.Visible = Player2Cards.Count >= 20;
+            picThumb21Player2.Visible = Player2Cards.Count >= 21;
+            picThumb22Player2.Visible = Player2Cards.Count >= 22;
+            picThumb23Player2.Visible = Player2Cards.Count >= 23;
+            picThumb24Player2.Visible = Player2Cards.Count >= 24;
+            picThumb25Player2.Visible = Player2Cards.Count >= 25;
+            picThumb26Player2.Visible = Player2Cards.Count >= 26;
+            picThumb27Player2.Visible = Player2Cards.Count >= 27;
+            picThumb28Player2.Visible = Player2Cards.Count >= 28;
+            picThumb29Player2.Visible = Player2Cards.Count >= 29;
+            picThumb30Player2.Visible = Player2Cards.Count >= 30;
+            picThumb31Player2.Visible = Player2Cards.Count >= 31;
+            picThumb32Player2.Visible = Player2Cards.Count >= 32;
+            picThumb33Player2.Visible = Player2Cards.Count >= 33;
+            picThumb34Player2.Visible = Player2Cards.Count >= 34;
+            picThumb35Player2.Visible = Player2Cards.Count >= 35;
+            picThumb36Player2.Visible = Player2Cards.Count >= 36;
+            picThumb37Player2.Visible = Player2Cards.Count >= 37;
+            picThumb38Player2.Visible = Player2Cards.Count >= 38;
+            picThumb39Player2.Visible = Player2Cards.Count >= 39;
+            picThumb40Player2.Visible = Player2Cards.Count >= 40;
         }
 
         private void SetCard(Car car, EPlayer player)
@@ -496,6 +632,17 @@ namespace MyTrunfo
             lblHorsePowerPlayer2.BackColor = Color.White;
             lblDisplacementsPlayer2.BackColor = Color.White;
             lblPricePlayer2.BackColor = Color.White;
+        }
+
+        private void CommandCPU()
+        {
+            //MessageBox.Show("Vez do oponente");
+            Array values = Enum.GetValues(typeof(ECategory));
+            Random random = new Random();
+            ECategory randomCategory = (ECategory)values.GetValue(random.Next(values.Length));
+            WaitingCPU();
+            Compare(randomCategory);
+
         }
     }
 }

@@ -163,6 +163,8 @@ namespace MyTrunfo
             this.picThumb2Player1 = new System.Windows.Forms.PictureBox();
             this.picThumb1Player1 = new System.Windows.Forms.PictureBox();
             this.picCardPlayer1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblWinner = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlGame.SuspendLayout();
             this.pnlPlayer2.SuspendLayout();
@@ -330,6 +332,7 @@ namespace MyTrunfo
             // 
             // pnlGame
             // 
+            this.pnlGame.Controls.Add(this.lblWinner);
             this.pnlGame.Controls.Add(this.lblPlayer2);
             this.pnlGame.Controls.Add(this.pnlPlayer2);
             this.pnlGame.Controls.Add(this.lblPlayer1);
@@ -538,7 +541,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer2.AutoSize = true;
             this.lblMaxSpeedPlayer2.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer2.Name = "lblMaxSpeedPlayer2";
-            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer2.TabIndex = 47;
             this.lblMaxSpeedPlayer2.Text = "Velocidade Max KM/H";
             // 
@@ -571,7 +574,7 @@ namespace MyTrunfo
             // 
             // pnlCountPlayer2
             // 
-            this.pnlCountPlayer2.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pnlCountPlayer2.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pnlCountPlayer2.Controls.Add(this.lblCountCardsPlayer2);
             this.pnlCountPlayer2.Controls.Add(this.lblCountPlayer2);
             this.pnlCountPlayer2.Location = new System.Drawing.Point(234, 8);
@@ -1023,6 +1026,7 @@ namespace MyTrunfo
             // pnlPlayer1
             // 
             this.pnlPlayer1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pnlPlayer1.Controls.Add(this.panel1);
             this.pnlPlayer1.Controls.Add(this.picCarPlayer1);
             this.pnlPlayer1.Controls.Add(this.picCountryPlayer1);
             this.pnlPlayer1.Controls.Add(this.lblCarBrandPlayer1);
@@ -1211,7 +1215,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1.AutoSize = true;
             this.lblMaxSpeedPlayer1.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer1.Name = "lblMaxSpeedPlayer1";
-            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
             this.lblMaxSpeedPlayer1.Click += new System.EventHandler(this.lblMaxSpeedPlayer1_Click);
@@ -1248,7 +1252,7 @@ namespace MyTrunfo
             // 
             // pnlCountPlayer1
             // 
-            this.pnlCountPlayer1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.pnlCountPlayer1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pnlCountPlayer1.Controls.Add(this.lblCountCardsPlayer1);
             this.pnlCountPlayer1.Controls.Add(this.lblCountPlayer1);
             this.pnlCountPlayer1.Location = new System.Drawing.Point(234, 8);
@@ -1687,6 +1691,23 @@ namespace MyTrunfo
             this.picCardPlayer1.TabIndex = 0;
             this.picCardPlayer1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Location = new System.Drawing.Point(246, 493);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 21);
+            this.panel1.TabIndex = 4;
+            // 
+            // lblWinner
+            // 
+            this.lblWinner.AutoSize = true;
+            this.lblWinner.Location = new System.Drawing.Point(421, 508);
+            this.lblWinner.Name = "lblWinner";
+            this.lblWinner.Size = new System.Drawing.Size(0, 15);
+            this.lblWinner.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1934,6 +1955,8 @@ namespace MyTrunfo
         private System.Windows.Forms.PictureBox picCarPlayer1;
         private System.Windows.Forms.Button btn02;
         private System.Windows.Forms.Button btn01;
+        private System.Windows.Forms.Label lblWinner;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
