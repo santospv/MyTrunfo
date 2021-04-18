@@ -21,7 +21,7 @@ namespace MyTrunfo
         public Boolean Player1IsVisible { get; set; }
         public Boolean Player2IsVisible { get; set; }
         public EPlayer CurrentWinner { get; set; }
-        public EPlayer LastWinner { get; set; }
+        public EPlayer CurrentPlayer { get; set; }
         #endregion
 
         #region constructors
@@ -89,7 +89,7 @@ namespace MyTrunfo
             ResetThumbs(EPlayer.Player2);
             TurnCard(EPlayer.Player1);
             TurnCard(EPlayer.Player2);
-            RefreshTiedCards();
+            RefreshTiedPannel();
             CreateCards();
             ShuffleCards();
         }
@@ -133,7 +133,7 @@ namespace MyTrunfo
         //    AllCards.Add(new Car() { Id = 34, Code = "D0", Name = "Spacefox", Image = Resources.Spacefox, Brand = "Volkswagen", Country = ECountry.Germany, Consumption = 9.4m, HorsePower = 104, Length = 4204, MaxSpeed = 177, Displacements = 1600, Price = 41 });
         //    AllCards.Add(new Car() { Id = 35, Code = "C6", Name = "Tiguan", Image = Resources.Tiguan, Brand = "Volkswagen", Country = ECountry.Germany, Consumption = 9.6m, HorsePower = 220, Length = 4705, MaxSpeed = 223, Displacements = 2000, Price = 225 });
         //    AllCards.Add(new Car() { Id = 36, Code = "D7", Name = "Toro", Image = Resources.Toro, Brand = "Fiat", Country = ECountry.Italy, Consumption = 11.2m, HorsePower = 139, Length = 4915, MaxSpeed = 181, Displacements = 1700, Price = 100 });
-        //    AllCards.Add(new Car() { Id = 37, Code = "C8", Name = "Tucson", Image = Resources.Tucson, Brand = "Hyundai", Country = ECountry.SouthCorea, Consumption = 15.1m, HorsePower = 143,Length = 4325,MaxSpeed = 180,Displacements = 2000, Price = 155 });
+        //    AllCards.Add(new Car() { Id = 37, Code = "C8", Name = "Tucson", Image = Resources.Tucson, Brand = "Hyundai", Country = ECountry.SouthCorea, Consumption = 15.1m, HorsePower = 143, Length = 4325, MaxSpeed = 180, Displacements = 2000, Price = 155 });
         //    AllCards.Add(new Car() { Id = 38, Code = "C0", Name = "Uno", Image = Resources.Uno, Brand = "Fiat", Country = ECountry.Italy, Consumption = 8.5m, HorsePower = 57, Length = 3644, MaxSpeed = 151, Displacements = 1000, Price = 9 });
         //    AllCards.Add(new Car() { Id = 39, Code = "C5", Name = "Vectra", Image = Resources.Vectra, Brand = "Chevrolet", Country = ECountry.USA, Consumption = 8.2m, HorsePower = 123, Length = 4495, MaxSpeed = 195, Displacements = 2198, Price = 15 });
         //    AllCards.Add(new Car() { Id = 40, Code = "D4", Name = "Zafira", Image = Resources.Zafira, Brand = "Chevrolet", Country = ECountry.USA, Consumption = 9.4m, HorsePower = 140, Length = 4334, MaxSpeed = 181, Displacements = 2000, Price = 30 });
@@ -305,7 +305,7 @@ namespace MyTrunfo
 
         public void Compare(ECategory category)
         {
-            if (CurrentWinner == EPlayer.Player2)
+            if (CurrentPlayer == EPlayer.Player2 )
                 MessageBox.Show("Oponente escolheu " + category);
 
             TurnCard(EPlayer.Player2);
@@ -314,17 +314,30 @@ namespace MyTrunfo
             var player2CardActive = Player2Cards.FirstOrDefault();
             Player1Cards.Remove(Player1Cards.FirstOrDefault());
             Player2Cards.Remove(Player2Cards.FirstOrDefault());
-            winner = DetermineWinner(category, winner, player1CardActive, player2CardActive);
+            winner = DetermineWinner(category, player1CardActive, player2CardActive);
             CurrentWinner = winner;
+            CurrentPlayer = CurrentWinner == EPlayer.Tied 
+                ? CurrentPlayer == EPlayer.Player1 
+                    ? EPlayer.Player2 
+                    : EPlayer.Player1 
+                : CurrentWinner;
             AddCardsToWinner(winner, player1CardActive, player2CardActive);
             SetLabelsColors(category, winner);
             Waiting();
             RefreshActiveCards();
             RefreshThumbs();
-            RefreshTiedCards();
+            RefreshTiedPannel();
             ClearLabels();
             TurnCard(EPlayer.Player2);
-            NextRound();
+            StartRound();
+        }
+
+        private void CheckTied(EPlayer winner)
+        {
+            if (winner == EPlayer.Tied)
+            {
+                
+            }
         }
 
         private void AddCardsToWinner(EPlayer winner, Car player1CardActive, Car player2CardActive)
@@ -352,7 +365,7 @@ namespace MyTrunfo
             }
         }
 
-        private void RefreshTiedCards()
+        private void RefreshTiedPannel()
         {
             var isVisible = TiedCards.Count > 0;
             lblTiedCards.Visible = isVisible;
@@ -361,8 +374,9 @@ namespace MyTrunfo
             lblTiedCards.Text = TiedCards.Count().ToString();
         }
 
-        private static EPlayer DetermineWinner(ECategory category, EPlayer winner, Car player1CardActive, Car player2CardActive)
+        private static EPlayer DetermineWinner(ECategory category, Car player1CardActive, Car player2CardActive)
         {
+            var winner = EPlayer.Tied;
             switch (category)
             {
                 case ECategory.Consumption:
@@ -507,13 +521,12 @@ namespace MyTrunfo
             }
         }
 
-        private void NextRound()
+        private void StartRound()
         {
-            //MessageBox.Show("Nova Rodada");
-            if (CurrentWinner == EPlayer.Player1 || (CurrentWinner == EPlayer.Tied && LastWinner == EPlayer.Player2))
+            if (CurrentPlayer == EPlayer.Player1)
                 return;
 
-            if (CurrentWinner == EPlayer.Player2 || (CurrentWinner == EPlayer.Tied && LastWinner == EPlayer.Player1))
+            if (CurrentPlayer == EPlayer.Player2)
             {
                 CommandCPU();
                 return;
@@ -539,7 +552,23 @@ namespace MyTrunfo
             TurnCard(EPlayer.Player1);
             RefreshActiveCards();
             lblPlayer1.Text = txtName.Text;
+            txtName.Enabled = false;
             btnStart.Enabled = false;
+            ShuffleStartPlayer();
+            MessageBox.Show(CurrentPlayer + " Começa!");
+            StartRound();
+        }
+
+        private void ShuffleStartPlayer()
+        {
+            CurrentPlayer = EPlayer.Tied;
+            do
+            {
+                Array values = Enum.GetValues(typeof(EPlayer));
+                Random random = new Random();
+                CurrentPlayer = (EPlayer)values.GetValue(random.Next(values.Length));
+            }
+            while (CurrentPlayer == EPlayer.Tied);
         }
 
         private void RefreshActiveCards()
