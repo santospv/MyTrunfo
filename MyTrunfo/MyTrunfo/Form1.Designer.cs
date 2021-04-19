@@ -37,6 +37,9 @@ namespace MyTrunfo
             this.lblName = new System.Windows.Forms.Label();
             this.lblNameApp = new System.Windows.Forms.Label();
             this.pnlGame = new System.Windows.Forms.Panel();
+            this.pnlTiedCards = new System.Windows.Forms.Panel();
+            this.lblTiedCards = new System.Windows.Forms.Label();
+            this.lblTiedCardsComplement = new System.Windows.Forms.Label();
             this.lblWinner = new System.Windows.Forms.Label();
             this.lblPlayer2 = new System.Windows.Forms.Label();
             this.pnlPlayer2 = new System.Windows.Forms.Panel();
@@ -165,11 +168,9 @@ namespace MyTrunfo
             this.picThumb2Player1 = new System.Windows.Forms.PictureBox();
             this.picThumb1Player1 = new System.Windows.Forms.PictureBox();
             this.picCardPlayer1 = new System.Windows.Forms.PictureBox();
-            this.pnlTiedCards = new System.Windows.Forms.Panel();
-            this.lblTiedCardsComplement = new System.Windows.Forms.Label();
-            this.lblTiedCards = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.pnlGame.SuspendLayout();
+            this.pnlTiedCards.SuspendLayout();
             this.pnlPlayer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCarPlayer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCountryPlayer2)).BeginInit();
@@ -260,7 +261,6 @@ namespace MyTrunfo
             ((System.ComponentModel.ISupportInitialize)(this.picThumb2Player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picThumb1Player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCardPlayer1)).BeginInit();
-            this.pnlTiedCards.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -285,7 +285,6 @@ namespace MyTrunfo
             this.btn02.TabIndex = 5;
             this.btn02.Text = "BTN 02";
             this.btn02.UseVisualStyleBackColor = true;
-            this.btn02.Click += new System.EventHandler(this.btn02_Click);
             // 
             // btn01
             // 
@@ -295,7 +294,6 @@ namespace MyTrunfo
             this.btn01.TabIndex = 4;
             this.btn01.Text = "BTN 01";
             this.btn01.UseVisualStyleBackColor = true;
-            this.btn01.Click += new System.EventHandler(this.btn01_Click);
             // 
             // btnStart
             // 
@@ -305,7 +303,6 @@ namespace MyTrunfo
             this.btnStart.TabIndex = 3;
             this.btnStart.Text = "Iniciar Jogo";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // txtName
             // 
@@ -346,6 +343,39 @@ namespace MyTrunfo
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(892, 540);
             this.pnlGame.TabIndex = 1;
+            // 
+            // pnlTiedCards
+            // 
+            this.pnlTiedCards.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pnlTiedCards.Controls.Add(this.lblTiedCards);
+            this.pnlTiedCards.Controls.Add(this.lblTiedCardsComplement);
+            this.pnlTiedCards.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlTiedCards.Location = new System.Drawing.Point(403, 18);
+            this.pnlTiedCards.Name = "pnlTiedCards";
+            this.pnlTiedCards.Size = new System.Drawing.Size(88, 79);
+            this.pnlTiedCards.TabIndex = 5;
+            // 
+            // lblTiedCards
+            // 
+            this.lblTiedCards.AutoSize = true;
+            this.lblTiedCards.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTiedCards.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTiedCards.Location = new System.Drawing.Point(26, 13);
+            this.lblTiedCards.Name = "lblTiedCards";
+            this.lblTiedCards.Size = new System.Drawing.Size(40, 47);
+            this.lblTiedCards.TabIndex = 1;
+            this.lblTiedCards.Text = "0";
+            // 
+            // lblTiedCardsComplement
+            // 
+            this.lblTiedCardsComplement.AutoSize = true;
+            this.lblTiedCardsComplement.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTiedCardsComplement.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTiedCardsComplement.Location = new System.Drawing.Point(0, 64);
+            this.lblTiedCardsComplement.Name = "lblTiedCardsComplement";
+            this.lblTiedCardsComplement.Size = new System.Drawing.Size(88, 12);
+            this.lblTiedCardsComplement.TabIndex = 0;
+            this.lblTiedCardsComplement.Text = "CARDS NA PILHA";
             // 
             // lblWinner
             // 
@@ -1220,7 +1250,6 @@ namespace MyTrunfo
             this.lblPricePlayer1.Size = new System.Drawing.Size(123, 15);
             this.lblPricePlayer1.TabIndex = 49;
             this.lblPricePlayer1.Text = "Preço K R$                    ";
-            this.lblPricePlayer1.Click += new System.EventHandler(this.lblPricePlayer1_Click);
             // 
             // lblDisplacementsPlayer1
             // 
@@ -1230,7 +1259,6 @@ namespace MyTrunfo
             this.lblDisplacementsPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblDisplacementsPlayer1.TabIndex = 48;
             this.lblDisplacementsPlayer1.Text = "Cilindradas CC             ";
-            this.lblDisplacementsPlayer1.Click += new System.EventHandler(this.lblDisplacementsPlayer1_Click);
             // 
             // lblMaxSpeedPlayer1
             // 
@@ -1240,7 +1268,6 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
-            this.lblMaxSpeedPlayer1.Click += new System.EventHandler(this.lblMaxSpeedPlayer1_Click);
             // 
             // lblLengthPlayer1
             // 
@@ -1250,7 +1277,6 @@ namespace MyTrunfo
             this.lblLengthPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblLengthPlayer1.TabIndex = 46;
             this.lblLengthPlayer1.Text = "Largura cm                   ";
-            this.lblLengthPlayer1.Click += new System.EventHandler(this.lblLengthPlayer1_Click);
             // 
             // lblHorsePowerPlayer1
             // 
@@ -1260,7 +1286,6 @@ namespace MyTrunfo
             this.lblHorsePowerPlayer1.Size = new System.Drawing.Size(122, 15);
             this.lblHorsePowerPlayer1.TabIndex = 45;
             this.lblHorsePowerPlayer1.Text = "Potência CV                 ";
-            this.lblHorsePowerPlayer1.Click += new System.EventHandler(this.lblHorsePowerPlayer1_Click);
             // 
             // lblConsumptionPlayer1
             // 
@@ -1270,7 +1295,6 @@ namespace MyTrunfo
             this.lblConsumptionPlayer1.Size = new System.Drawing.Size(121, 15);
             this.lblConsumptionPlayer1.TabIndex = 44;
             this.lblConsumptionPlayer1.Text = "Consumo Km/L          ";
-            this.lblConsumptionPlayer1.Click += new System.EventHandler(this.lblConsumptionPlayer1_Click);
             // 
             // pnlCountPlayer1
             // 
@@ -1713,39 +1737,6 @@ namespace MyTrunfo
             this.picCardPlayer1.TabIndex = 0;
             this.picCardPlayer1.TabStop = false;
             // 
-            // pnlTiedCards
-            // 
-            this.pnlTiedCards.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.pnlTiedCards.Controls.Add(this.lblTiedCards);
-            this.pnlTiedCards.Controls.Add(this.lblTiedCardsComplement);
-            this.pnlTiedCards.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlTiedCards.Location = new System.Drawing.Point(403, 18);
-            this.pnlTiedCards.Name = "pnlTiedCards";
-            this.pnlTiedCards.Size = new System.Drawing.Size(88, 79);
-            this.pnlTiedCards.TabIndex = 5;
-            // 
-            // lblTiedCardsComplement
-            // 
-            this.lblTiedCardsComplement.AutoSize = true;
-            this.lblTiedCardsComplement.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTiedCardsComplement.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTiedCardsComplement.Location = new System.Drawing.Point(0, 64);
-            this.lblTiedCardsComplement.Name = "lblTiedCardsComplement";
-            this.lblTiedCardsComplement.Size = new System.Drawing.Size(88, 12);
-            this.lblTiedCardsComplement.TabIndex = 0;
-            this.lblTiedCardsComplement.Text = "CARDS NA PILHA";
-            // 
-            // lblTiedCards
-            // 
-            this.lblTiedCards.AutoSize = true;
-            this.lblTiedCards.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTiedCards.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTiedCards.Location = new System.Drawing.Point(26, 13);
-            this.lblTiedCards.Name = "lblTiedCards";
-            this.lblTiedCards.Size = new System.Drawing.Size(40, 47);
-            this.lblTiedCards.TabIndex = 1;
-            this.lblTiedCards.Text = "0";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1759,6 +1750,8 @@ namespace MyTrunfo
             this.pnlTop.PerformLayout();
             this.pnlGame.ResumeLayout(false);
             this.pnlGame.PerformLayout();
+            this.pnlTiedCards.ResumeLayout(false);
+            this.pnlTiedCards.PerformLayout();
             this.pnlPlayer2.ResumeLayout(false);
             this.pnlPlayer2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCarPlayer2)).EndInit();
@@ -1853,8 +1846,6 @@ namespace MyTrunfo
             ((System.ComponentModel.ISupportInitialize)(this.picThumb2Player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picThumb1Player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCardPlayer1)).EndInit();
-            this.pnlTiedCards.ResumeLayout(false);
-            this.pnlTiedCards.PerformLayout();
             this.ResumeLayout(false);
 
         }
