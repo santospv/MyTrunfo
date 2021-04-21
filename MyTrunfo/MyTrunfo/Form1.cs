@@ -20,6 +20,8 @@ namespace MyTrunfo
         public List<Car> TiedCards { get; set; }
         public Boolean Player1IsVisible { get; set; }
         public Boolean Player2IsVisible { get; set; }
+        public Car Player1 { get; set; }
+        public Car Player2 { get; set; }
         #endregion
 
         #region constructors
@@ -37,6 +39,16 @@ namespace MyTrunfo
         #region private methods
         private void PrepareEnvironment()
         {
+            TiedCards = new List<Car>();
+            Player1IsVisible = true;
+            Player2IsVisible = true;
+            ResetThumbs(EPlayer.Player1);
+            ResetThumbs(EPlayer.Player2);
+            CreateCards();
+            MixCards();
+            
+            
+
 
         }
 
@@ -274,6 +286,137 @@ namespace MyTrunfo
             lblPricePlayer2.BackColor = Color.White;
         }
 
+        private void ResetPlayer()
+        {
+
+            //Desabilita cartas player 1
+            picThumb40Player1.Visible =
+            picThumb39Player1.Visible =
+            picThumb38Player1.Visible =
+            picThumb37Player1.Visible =
+            picThumb36Player1.Visible =
+            picThumb35Player1.Visible =
+            picThumb34Player1.Visible =
+            picThumb33Player1.Visible =
+            picThumb32Player1.Visible =
+            picThumb31Player1.Visible =
+            picThumb30Player1.Visible =
+            picThumb29Player1.Visible =
+            picThumb28Player1.Visible =
+            picThumb27Player1.Visible =
+            picThumb26Player1.Visible =
+            picThumb25Player1.Visible =
+            picThumb24Player1.Visible =
+            picThumb23Player1.Visible =
+            picThumb22Player1.Visible =
+            picThumb21Player1.Visible = false;
+
+            //Desabilita cartas player 2
+            picThumb40Player2.Visible =
+            picThumb39Player2.Visible =
+            picThumb38Player2.Visible =
+            picThumb37Player2.Visible =
+            picThumb36Player2.Visible =
+            picThumb35Player2.Visible =
+            picThumb34Player2.Visible =
+            picThumb33Player2.Visible =
+            picThumb32Player2.Visible =
+            picThumb31Player2.Visible =
+            picThumb30Player2.Visible =
+            picThumb29Player2.Visible =
+            picThumb28Player2.Visible =
+            picThumb27Player2.Visible =
+            picThumb26Player2.Visible =
+            picThumb25Player2.Visible =
+            picThumb24Player2.Visible =
+            picThumb23Player2.Visible =
+            picThumb22Player2.Visible =
+            picThumb21Player2.Visible = false;
+        }
+
+        private void MixCards()
+        {
+            Player1Cards = new List<Car>();
+            Player2Cards = new List<Car>();
+
+            List<Car> CopyAllCards = AllCards;
+
+            Random random = new Random();
+
+            int index;
+
+            while (CopyAllCards.Count != 0)
+            {
+                
+
+                if (Player1Cards.Count == Player2Cards.Count)
+                    Player1Cards.Add(CopyAllCards[index = random.Next(0, CopyAllCards.Count)]);
+                
+                else
+                    Player2Cards.Add(CopyAllCards[index = random.Next(0, CopyAllCards.Count)]);
+                CopyAllCards.RemoveAt(index);
+            }
+        }
+
+
+
+        private void DisplayCards(EPlayer player)
+        {
+            if (player == EPlayer.Player1)
+            {
+                Player1 = Player1Cards.FirstOrDefault();
+
+                lblCarNamePlayer1.Text = Player1.Name;
+                lblCarBrandPlayer1.Text = Player1.Brand;
+                lblCodeCardPlayer1.Text = Player1.Code;
+                lblConsumptionPlayer1.Text = Player1.Consumption.ToString();
+                lblHorsePowerPlayer1.Text = Player1.HorsePower.ToString();
+                lblLengthPlayer1.Text = Player1.Length.ToString();
+                lblDisplacementsPlayer1.Text = Player1.Displacements.ToString();
+                lblMaxSpeedPlayer1.Text = Player1.MaxSpeed.ToString();
+                lblPricePlayer1.Text = Player1.Price.ToString();
+                picCardPlayer1.Image = Player1.Image;
+                picCountryPlayer1.Visible = Player1IsVisible;
+                picCarPlayer1.Visible = Player1IsVisible;
+
+            }
+
+            if (player == EPlayer.Player2)
+            {
+                Player2 = Player2Cards.FirstOrDefault();
+
+                lblCarNamePlayer2.Text = Player2.Name;
+                lblCarBrandPlayer2.Text = Player2.Brand;
+                lblCodeCardPlayer2.Text = Player2.Code;
+                lblConsumptionPlayer2.Text = Player2.Consumption.ToString();
+                lblHorsePowerPlayer2.Text = Player2.HorsePower.ToString();
+                lblLengthPlayer2.Text = Player2.Length.ToString();
+                lblDisplacementsPlayer2.Text = Player2.Displacements.ToString();
+                lblMaxSpeedPlayer2.Text = Player2.MaxSpeed.ToString();
+                lblPricePlayer2.Text = Player2.Price.ToString();
+                picCardPlayer2.Image = Player2.Image;
+                picCountryPlayer2.Visible = Player2IsVisible;
+                picCarPlayer2.Visible = Player2IsVisible;
+            }
+        }
+
+        private void InitializeGame()
+        {
+            DisplayCards(EPlayer.Player1);
+            DisplayCards(EPlayer.Player2);
+        }
+
         #endregion
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            InitializeGame();
+        }
+
+        private void btn01_Click(object sender, EventArgs e)
+        {
+            RefreshCard(EPlayer.Player1);
+            RefreshCard(EPlayer.Player2);
+        }
     }
 }

@@ -292,8 +292,9 @@ namespace MyTrunfo
             this.btn01.Name = "btn01";
             this.btn01.Size = new System.Drawing.Size(75, 23);
             this.btn01.TabIndex = 4;
-            this.btn01.Text = "BTN 01";
+            this.btn01.Text = "Resetar";
             this.btn01.UseVisualStyleBackColor = true;
+            this.btn01.Click += new System.EventHandler(this.btn01_Click);
             // 
             // btnStart
             // 
@@ -303,6 +304,7 @@ namespace MyTrunfo
             this.btnStart.TabIndex = 3;
             this.btnStart.Text = "Iniciar Jogo";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // txtName
             // 
@@ -584,7 +586,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer2.AutoSize = true;
             this.lblMaxSpeedPlayer2.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer2.Name = "lblMaxSpeedPlayer2";
-            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer2.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer2.TabIndex = 47;
             this.lblMaxSpeedPlayer2.Text = "Velocidade Max KM/H";
             // 
@@ -1265,7 +1267,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1.AutoSize = true;
             this.lblMaxSpeedPlayer1.Location = new System.Drawing.Point(64, 398);
             this.lblMaxSpeedPlayer1.Name = "lblMaxSpeedPlayer1";
-            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(124, 15);
+            this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
             // 
