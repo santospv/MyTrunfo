@@ -461,9 +461,8 @@ namespace MyTrunfo
 
             var winner = EPlayer.Tied;
             winner = Confront(category, Player1, Player2);
-            CurrentWinner = (winner == EPlayer.Tied) ? winner : (CurrentPlayer == EPlayer.Player1) ? EPlayer.Player2 : EPlayer.Player1;               
             MessageBox.Show(winner.ToString());
-            
+           
         }
 
         private void InitializeGame()
