@@ -22,6 +22,8 @@ namespace MyTrunfo
         public Boolean Player2IsVisible { get; set; }
         public Car Player1 { get; set; }
         public Car Player2 { get; set; }
+        public EPlayer CurrentPlayer { get; set; }
+        public EPlayer CurrentWinner { get; set; }
         #endregion
 
         #region constructors
@@ -46,10 +48,7 @@ namespace MyTrunfo
             ResetThumbs(EPlayer.Player2);
             CreateCards();
             MixCards();
-            
-            
-
-
+               
         }
 
         private void CreateCards()
@@ -271,6 +270,7 @@ namespace MyTrunfo
 
         private void ClearLabels()
         {
+            //Player 1 
             lblConsumptionPlayer1.BackColor = Color.White;
             lblMaxSpeedPlayer1.BackColor = Color.White;
             lblLengthPlayer1.BackColor = Color.White;
@@ -278,12 +278,27 @@ namespace MyTrunfo
             lblDisplacementsPlayer1.BackColor = Color.White;
             lblPricePlayer1.BackColor = Color.White;
 
+            lblConsumptionPlayer1Value.BackColor = Color.White;
+            lblHorsePowerPlayer1Value.BackColor = Color.White;
+            lblLengthPlayer1Value.BackColor = Color.White;
+            lblDisplacementsPlayer1Value.BackColor = Color.White;
+            lblMaxSpeedPlayer1Value.BackColor = Color.White;
+            lblPricePlayer1Value.BackColor = Color.White;
+
+            //Player 2
             lblConsumptionPlayer2.BackColor = Color.White;
             lblMaxSpeedPlayer2.BackColor = Color.White;
             lblLengthPlayer2.BackColor = Color.White;
             lblHorsePowerPlayer2.BackColor = Color.White;
             lblDisplacementsPlayer2.BackColor = Color.White;
             lblPricePlayer2.BackColor = Color.White;
+
+            lblConsumptionPlayer2Value.BackColor = Color.White;
+            lblHorsePowerPlayer2Value.BackColor = Color.White;
+            lblLengthPlayer2Value.BackColor = Color.White;
+            lblDisplacementsPlayer2Value.BackColor = Color.White;
+            lblMaxSpeedPlayer2Value.BackColor = Color.White;
+            lblPricePlayer2Value.BackColor = Color.White;
         }
 
         private void ResetPlayer()
@@ -348,7 +363,6 @@ namespace MyTrunfo
             while (CopyAllCards.Count != 0)
             {
                 
-
                 if (Player1Cards.Count == Player2Cards.Count)
                     Player1Cards.Add(CopyAllCards[index = random.Next(0, CopyAllCards.Count)]);
                 
@@ -369,15 +383,15 @@ namespace MyTrunfo
                 lblCarNamePlayer1.Text = Player1.Name;
                 lblCarBrandPlayer1.Text = Player1.Brand;
                 lblCodeCardPlayer1.Text = Player1.Code;
-                lblConsumptionPlayer1.Text = Player1.Consumption.ToString();
-                lblHorsePowerPlayer1.Text = Player1.HorsePower.ToString();
-                lblLengthPlayer1.Text = Player1.Length.ToString();
-                lblDisplacementsPlayer1.Text = Player1.Displacements.ToString();
-                lblMaxSpeedPlayer1.Text = Player1.MaxSpeed.ToString();
-                lblPricePlayer1.Text = Player1.Price.ToString();
-                picCardPlayer1.Image = Player1.Image;
-                picCountryPlayer1.Visible = Player1IsVisible;
-                picCarPlayer1.Visible = Player1IsVisible;
+                lblConsumptionPlayer1Value.Text = Player1.Consumption.ToString();
+                lblHorsePowerPlayer1Value.Text = Player1.HorsePower.ToString();
+                lblLengthPlayer1Value.Text = Player1.Length.ToString();
+                lblDisplacementsPlayer1Value.Text = Player1.Displacements.ToString();
+                lblMaxSpeedPlayer1Value.Text = Player1.MaxSpeed.ToString();
+                lblPricePlayer1Value.Text = Player1.Price.ToString();
+                //picCardPlayer1.Image = Player1.Image;
+                //picCountryPlayer1.Image = Player1.;
+                picCarPlayer1.Image = Player1.Image;
 
             }
 
@@ -388,16 +402,68 @@ namespace MyTrunfo
                 lblCarNamePlayer2.Text = Player2.Name;
                 lblCarBrandPlayer2.Text = Player2.Brand;
                 lblCodeCardPlayer2.Text = Player2.Code;
-                lblConsumptionPlayer2.Text = Player2.Consumption.ToString();
-                lblHorsePowerPlayer2.Text = Player2.HorsePower.ToString();
-                lblLengthPlayer2.Text = Player2.Length.ToString();
-                lblDisplacementsPlayer2.Text = Player2.Displacements.ToString();
-                lblMaxSpeedPlayer2.Text = Player2.MaxSpeed.ToString();
-                lblPricePlayer2.Text = Player2.Price.ToString();
-                picCardPlayer2.Image = Player2.Image;
-                picCountryPlayer2.Visible = Player2IsVisible;
-                picCarPlayer2.Visible = Player2IsVisible;
+                lblConsumptionPlayer2Value.Text = Player2.Consumption.ToString();
+                lblHorsePowerPlayer2Value.Text = Player2.HorsePower.ToString();
+                lblLengthPlayer2Value.Text = Player2.Length.ToString();
+                lblDisplacementsPlayer2Value.Text = Player2.Displacements.ToString();
+                lblMaxSpeedPlayer2Value.Text = Player2.MaxSpeed.ToString();
+                lblPricePlayer2Value.Text = Player2.Price.ToString();
+                //picCardPlayer2.Image = Player2.Image;
+                //picCountryPlayer2.Visible = Player2IsVisible;
+                picCarPlayer2.Image = Player2.Image;
             }
+        }
+
+
+        private static EPlayer Confront(ECategory eCategory, Car player1Card, Car player2Card)
+        {
+
+            var winner = EPlayer.Tied;
+
+            switch (eCategory)
+            {
+                case ECategory.Consumption:
+
+                    winner = ( player1Card.Consumption == player2Card.Consumption) ? EPlayer.Tied : (player1Card.Consumption > player2Card.Consumption) ? EPlayer.Player1 : EPlayer.Player2;
+                break;
+
+                case ECategory.HorsePower:
+
+                    winner = (player1Card.HorsePower == player2Card.HorsePower) ? EPlayer.Tied : (player1Card.HorsePower > player2Card.HorsePower) ? EPlayer.Player1 : EPlayer.Player2;
+                break;
+
+                case ECategory.Length:
+
+                    winner = (player1Card.Length == player2Card.Length) ? EPlayer.Tied : (player1Card.Length > player2Card.Length) ? EPlayer.Player1 : EPlayer.Player2;
+                break;
+
+                case ECategory.MaxSpeed:
+
+                    winner = (player1Card.MaxSpeed == player2Card.MaxSpeed) ? EPlayer.Tied : (player1Card.MaxSpeed > player2Card.MaxSpeed) ? EPlayer.Player1 : EPlayer.Player2;
+                break;
+
+                case ECategory.Displacements:
+
+                    winner = (player1Card.Displacements == player2Card.Displacements) ? EPlayer.Tied : (player1Card.Displacements > player2Card.Displacements) ? EPlayer.Player1 : EPlayer.Player2;
+                break;
+
+                case ECategory.Price:
+                    winner = (player1Card.Price == player2Card.Price) ? EPlayer.Tied : (player1Card.Price > player2Card.Price) ? EPlayer.Player1 : EPlayer.Player2;
+                    break;
+            }
+
+            return winner;
+
+        }
+
+        public void Compare(ECategory category)
+        {
+
+            var winner = EPlayer.Tied;
+            winner = Confront(category, Player1, Player2);
+            CurrentWinner = (winner == EPlayer.Tied) ? winner : (CurrentPlayer == EPlayer.Player1) ? EPlayer.Player2 : EPlayer.Player1;               
+            MessageBox.Show(winner.ToString());
+            
         }
 
         private void InitializeGame()
@@ -411,12 +477,37 @@ namespace MyTrunfo
         private void btnStart_Click(object sender, EventArgs e)
         {
             InitializeGame();
+
         }
 
-        private void btn01_Click(object sender, EventArgs e)
+        private void lblConsumptionPlayer1_Click(object sender, EventArgs e)
         {
-            RefreshCard(EPlayer.Player1);
-            RefreshCard(EPlayer.Player2);
+            Compare(ECategory.Consumption);
+        }
+
+        private void lblHorsePowerPlayer1_Click(object sender, EventArgs e)
+        {
+            Compare(ECategory.HorsePower);
+        }
+
+        private void lblLengthPlayer1_Click(object sender, EventArgs e)
+        {
+            Compare(ECategory.Length);
+        }
+
+        private void lblMaxSpeedPlayer1_Click(object sender, EventArgs e)
+        {
+            Compare(ECategory.MaxSpeed);
+        }
+
+        private void lblDisplacementsPlayer1_Click(object sender, EventArgs e)
+        {
+            Compare(ECategory.Displacements);
+        }
+
+        private void lblPricePlayer1_Click(object sender, EventArgs e)
+        {
+            Compare(ECategory.Price);
         }
     }
 }

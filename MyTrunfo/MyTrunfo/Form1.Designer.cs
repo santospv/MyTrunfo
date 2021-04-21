@@ -294,7 +294,6 @@ namespace MyTrunfo
             this.btn01.TabIndex = 4;
             this.btn01.Text = "Resetar";
             this.btn01.UseVisualStyleBackColor = true;
-            this.btn01.Click += new System.EventHandler(this.btn01_Click);
             // 
             // btnStart
             // 
@@ -1252,6 +1251,7 @@ namespace MyTrunfo
             this.lblPricePlayer1.Size = new System.Drawing.Size(123, 15);
             this.lblPricePlayer1.TabIndex = 49;
             this.lblPricePlayer1.Text = "Preço K R$                    ";
+            this.lblPricePlayer1.Click += new System.EventHandler(this.lblPricePlayer1_Click);
             // 
             // lblDisplacementsPlayer1
             // 
@@ -1261,6 +1261,7 @@ namespace MyTrunfo
             this.lblDisplacementsPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblDisplacementsPlayer1.TabIndex = 48;
             this.lblDisplacementsPlayer1.Text = "Cilindradas CC             ";
+            this.lblDisplacementsPlayer1.Click += new System.EventHandler(this.lblDisplacementsPlayer1_Click);
             // 
             // lblMaxSpeedPlayer1
             // 
@@ -1270,6 +1271,7 @@ namespace MyTrunfo
             this.lblMaxSpeedPlayer1.Size = new System.Drawing.Size(125, 15);
             this.lblMaxSpeedPlayer1.TabIndex = 47;
             this.lblMaxSpeedPlayer1.Text = "Velocidade Max KM/H";
+            this.lblMaxSpeedPlayer1.Click += new System.EventHandler(this.lblMaxSpeedPlayer1_Click);
             // 
             // lblLengthPlayer1
             // 
@@ -1279,6 +1281,7 @@ namespace MyTrunfo
             this.lblLengthPlayer1.Size = new System.Drawing.Size(124, 15);
             this.lblLengthPlayer1.TabIndex = 46;
             this.lblLengthPlayer1.Text = "Largura cm                   ";
+            this.lblLengthPlayer1.Click += new System.EventHandler(this.lblLengthPlayer1_Click);
             // 
             // lblHorsePowerPlayer1
             // 
@@ -1288,15 +1291,18 @@ namespace MyTrunfo
             this.lblHorsePowerPlayer1.Size = new System.Drawing.Size(122, 15);
             this.lblHorsePowerPlayer1.TabIndex = 45;
             this.lblHorsePowerPlayer1.Text = "Potência CV                 ";
+            this.lblHorsePowerPlayer1.Click += new System.EventHandler(this.lblHorsePowerPlayer1_Click);
             // 
             // lblConsumptionPlayer1
             // 
             this.lblConsumptionPlayer1.AutoSize = true;
+            this.lblConsumptionPlayer1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblConsumptionPlayer1.Location = new System.Drawing.Point(64, 323);
             this.lblConsumptionPlayer1.Name = "lblConsumptionPlayer1";
             this.lblConsumptionPlayer1.Size = new System.Drawing.Size(121, 15);
             this.lblConsumptionPlayer1.TabIndex = 44;
             this.lblConsumptionPlayer1.Text = "Consumo Km/L          ";
+            this.lblConsumptionPlayer1.Click += new System.EventHandler(this.lblConsumptionPlayer1_Click);
             // 
             // pnlCountPlayer1
             // 
