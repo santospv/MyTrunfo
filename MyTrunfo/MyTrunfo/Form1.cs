@@ -464,23 +464,22 @@ namespace MyTrunfo
 
             if (winner.ToString() == EPlayer.Player1.ToString())
             {
-
                 MessageBox.Show("Você ganhou :D");
             }
 
             if (winner.ToString() == EPlayer.Player2.ToString())
             {
-
                 MessageBox.Show("Você perdeu :(");
             }
-
 
             if (winner.ToString() == EPlayer.Tied.ToString())
             {
                     MessageBox.Show("EMPATE!");
             }
-                
 
+            CreateCards();
+            MixCards();
+            InitializeGame();
         }
 
         private void InitializeGame()
